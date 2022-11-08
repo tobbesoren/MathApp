@@ -15,11 +15,14 @@ class AnswerActivity : AppCompatActivity() {
         resultView = findViewById(R.id.answerView)
 
         val answeredCorrectly = intent.getBooleanExtra("answeredCorrectly", false)
-        Log.d("!!!", "Rätt? $answeredCorrectly")
+        val firstNumber = intent.getIntExtra("firstNumber", 0)
+        val secondNumber = intent.getIntExtra("secondNumber", 0)
+        val mathMethod = intent.getCharExtra("mathMethod", '+')
+
         if(answeredCorrectly) {
-            resultView.text = "Rätt!"
+            resultView.text = "Rätt! $firstNumber $mathMethod $secondNumber = ${firstNumber + secondNumber}"
         } else {
-            resultView.text = "Fel!"
+            resultView.text = "Fel! $firstNumber $mathMethod $secondNumber = ${firstNumber + secondNumber}"
         }
 
 

@@ -3,7 +3,6 @@ package com.example.mathapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.EditTextPreference
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -15,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var answerView : EditText
     var firstNumber = 0
     var secondNumber = 0
+    var mathMethod = '+'
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,19 +24,30 @@ class MainActivity : AppCompatActivity() {
         questionTextView = findViewById(R.id.textView)
         answerView = findViewById(R.id.answerEditText)
 
-        val button = findViewById<Button>(R.id.button)
-        button.setOnClickListener {
+        val checkButton = findViewById<Button>(R.id.button)
+        checkButton.setOnClickListener {
             checkAnswerAndStartAnswerActivity()
         }
+
+        val mathMethodButton = findViewById<Button>(R.id.mathMethodButton)
+        mathMethodButton.setOnClickListener {
+            val intent = Intent(this, MathMethodActivity::class.java)
+            intent.putExtra("mathMethod", mathMethod)
+            startActivity(intent)
+        }
+
         setNewQuestion()
 
     }
 
     override fun onResume() {
         super.onResume()
+        mathMethod = intent!!.getCharExtra("mathMethod", '+')
+        Log.d("!!!!", "mathMethod: $mathMethod")
         setNewQuestion()
         answerView.setText("")
     }
+    
 
     fun checkAnswerAndStartAnswerActivity() {
         val answerText = answerView.text.toString()
@@ -50,6 +61,9 @@ class MainActivity : AppCompatActivity() {
 
         val intent = Intent(this, AnswerActivity::class.java)
         intent.putExtra("answeredCorrectly", answeredCorrectly)
+        intent.putExtra("firstNumber", firstNumber)
+        intent.putExtra("secondNumber", secondNumber)
+        intent.putExtra("mathMethod", mathMethod)
         startActivity(intent)
     }
 
@@ -58,6 +72,6 @@ class MainActivity : AppCompatActivity() {
         firstNumber = (1..10).random()
         secondNumber = (1..10).random()
 
-        questionTextView.text = "$firstNumber + $secondNumber"
+        questionTextView.text = "$firstNumber $mathMethod $secondNumber"
     }
 }
