@@ -17,7 +17,10 @@ class MathMethodActivity : AppCompatActivity() {
         val divisionButton = findViewById<Button>(R.id.divisionButton)
 
         plusButton.setOnClickListener {
-
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.putExtra("mathMethod",'+')
+            startActivity(intent)
         }
 
         minusButton.setOnClickListener {
@@ -28,11 +31,17 @@ class MathMethodActivity : AppCompatActivity() {
         }
 
         multiplyButton.setOnClickListener {
-
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.putExtra("mathMethod",'x')
+            startActivity(intent)
         }
 
         divisionButton.setOnClickListener {
-
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.putExtra("mathMethod",'/')
+            startActivity(intent)
         }
 
     }

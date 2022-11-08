@@ -47,14 +47,25 @@ class MainActivity : AppCompatActivity() {
         setNewQuestion()
         answerView.setText("")
     }
-    
+
 
     fun checkAnswerAndStartAnswerActivity() {
         val answerText = answerView.text.toString()
         val answer = answerText.toIntOrNull()
-        val correctAnswer = firstNumber + secondNumber
+        val correctAnswer : Int
 
         var answeredCorrectly = false
+
+        when(mathMethod) {
+            '+' ->  correctAnswer = firstNumber + secondNumber
+            '-' -> correctAnswer = firstNumber - secondNumber
+            'x' -> correctAnswer = firstNumber * secondNumber
+            '/' -> correctAnswer = firstNumber / secondNumber
+            else -> correctAnswer = 0
+        }
+
+
+
         if(answer == correctAnswer) {
             answeredCorrectly = true
         }

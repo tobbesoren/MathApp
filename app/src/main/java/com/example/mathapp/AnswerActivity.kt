@@ -20,9 +20,27 @@ class AnswerActivity : AppCompatActivity() {
         val mathMethod = intent.getCharExtra("mathMethod", '+')
 
         if(answeredCorrectly) {
-            resultView.text = "Rätt! $firstNumber $mathMethod $secondNumber = ${firstNumber + secondNumber}"
+            when(mathMethod) {
+                '+' ->  resultView.text =
+                    "Rätt! $firstNumber $mathMethod $secondNumber = ${firstNumber + secondNumber}"
+                '-' -> resultView.text =
+                    "Rätt! $firstNumber $mathMethod $secondNumber = ${firstNumber - secondNumber}"
+                'x' -> resultView.text =
+                    "Rätt! $firstNumber $mathMethod $secondNumber = ${firstNumber * secondNumber}"
+                '/' -> resultView.text =
+                    "Rätt! $firstNumber $mathMethod $secondNumber = ${firstNumber / secondNumber}"
+            }
         } else {
-            resultView.text = "Fel! $firstNumber $mathMethod $secondNumber = ${firstNumber + secondNumber}"
+            when(mathMethod) {
+                '+' ->  resultView.text =
+                    "Fel! $firstNumber $mathMethod $secondNumber = ${firstNumber + secondNumber}"
+                '-' -> resultView.text =
+                    "Fel! $firstNumber $mathMethod $secondNumber = ${firstNumber - secondNumber}"
+                'x' -> resultView.text =
+                    "Fel! $firstNumber $mathMethod $secondNumber = ${firstNumber * secondNumber}"
+                '/' -> resultView.text =
+                    "Fel! $firstNumber $mathMethod $secondNumber = ${firstNumber / secondNumber}"
+            }
         }
 
 
