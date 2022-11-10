@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">MathApp</string>
+
+    <!-- mainActivity -->
+    <string name="checkButton">Check</string>
+    <string name="changeMathMethodButton">Change math method</string>
+
+    <!-- answerActivity -->
+    <string name="wrongAnswerText">Wrong! %1$s %2$s %3$s = %4$s</string>
+    <string name="correctAnswerText">Correct! %1$s %2$s %3$s = %4$s</string>
+    <string name="returnButton">Okay</string>
+
+    <!-- mathMethodActivity -->
+    <string name="chooseMathMethodText">Choose math method</string>
+
 </resources>

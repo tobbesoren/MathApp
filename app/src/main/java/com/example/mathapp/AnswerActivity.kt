@@ -3,6 +3,7 @@ package com.example.mathapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 
 class AnswerActivity : AppCompatActivity() {
@@ -14,6 +15,12 @@ class AnswerActivity : AppCompatActivity() {
 
         resultView = findViewById(R.id.answerView)
 
+        val returnButton = findViewById<Button>(R.id.returnButton)
+
+        returnButton.setOnClickListener {
+            finish()
+        }
+
         val answeredCorrectly = intent.getBooleanExtra("answeredCorrectly", false)
         val firstNumber = intent.getIntExtra("firstNumber", 0)
         val secondNumber = intent.getIntExtra("secondNumber", 0)
@@ -22,24 +29,72 @@ class AnswerActivity : AppCompatActivity() {
         if(answeredCorrectly) {
             when(mathMethod) {
                 '+' ->  resultView.text =
-                    "Rätt! $firstNumber $mathMethod $secondNumber = ${firstNumber + secondNumber}"
+                    getString(
+                        R.string.correctAnswerText,
+                        firstNumber.toString(),
+                        mathMethod.toString(),
+                        secondNumber.toString(),
+                        (firstNumber + secondNumber).toString()
+                    )
                 '-' -> resultView.text =
-                    "Rätt! $firstNumber $mathMethod $secondNumber = ${firstNumber - secondNumber}"
+                    getString(
+                        R.string.correctAnswerText,
+                        firstNumber.toString(),
+                        mathMethod.toString(),
+                        secondNumber.toString(),
+                        (firstNumber - secondNumber).toString()
+                    )
                 'x' -> resultView.text =
-                    "Rätt! $firstNumber $mathMethod $secondNumber = ${firstNumber * secondNumber}"
+                    getString(
+                        R.string.correctAnswerText,
+                        firstNumber.toString(),
+                        mathMethod.toString(),
+                        secondNumber.toString(),
+                        (firstNumber * secondNumber).toString()
+                    )
                 '/' -> resultView.text =
-                    "Rätt! $firstNumber $mathMethod $secondNumber = ${firstNumber / secondNumber}"
+                    getString(
+                        R.string.correctAnswerText,
+                        firstNumber.toString(),
+                        mathMethod.toString(),
+                        secondNumber.toString(),
+                        (firstNumber / secondNumber).toString()
+                    )
             }
         } else {
             when(mathMethod) {
                 '+' ->  resultView.text =
-                    "Fel! $firstNumber $mathMethod $secondNumber = ${firstNumber + secondNumber}"
+                    getString(
+                        R.string.wrongAnswerText,
+                        firstNumber.toString(),
+                        mathMethod.toString(),
+                        secondNumber.toString(),
+                        (firstNumber + secondNumber).toString()
+                    )
                 '-' -> resultView.text =
-                    "Fel! $firstNumber $mathMethod $secondNumber = ${firstNumber - secondNumber}"
+                    getString(
+                        R.string.wrongAnswerText,
+                        firstNumber.toString(),
+                        mathMethod.toString(),
+                        secondNumber.toString(),
+                        (firstNumber - secondNumber).toString()
+                        )
                 'x' -> resultView.text =
-                    "Fel! $firstNumber $mathMethod $secondNumber = ${firstNumber * secondNumber}"
+                    getString(
+                        R.string.wrongAnswerText,
+                        firstNumber.toString(),
+                        mathMethod.toString(),
+                        secondNumber.toString(),
+                        (firstNumber * secondNumber).toString()
+                    )
                 '/' -> resultView.text =
-                    "Fel! $firstNumber $mathMethod $secondNumber = ${firstNumber / secondNumber}"
+                    getString(
+                        R.string.wrongAnswerText,
+                        firstNumber.toString(),
+                        mathMethod.toString(),
+                        secondNumber.toString(),
+                        (firstNumber / secondNumber).toString()
+                    )
             }
         }
 

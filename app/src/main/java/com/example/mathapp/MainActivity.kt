@@ -84,5 +84,6 @@ class MainActivity : AppCompatActivity() {
         secondNumber = (1..10).random()
 
         questionTextView.text = "$firstNumber $mathMethod $secondNumber"
+
     }
 }

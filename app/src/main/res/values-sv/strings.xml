@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MatematikApp</string>
+
+    <!-- mainActivity -->
+    <string name="checkButton">Rätta</string>
+    <string name="changeMathMethodButton">Ändra räknesätt</string>
+
+    <!-- answerActivity -->
+    <string name="wrongAnswerText">Fel! %1$s %2$s %3$s = %4$s</string>
+    <string name="correctAnswerText">Rätt! %1$s %2$s %3$s = %4$s</string>
+    <string name="returnButton">Okej</string>
+
+    <!-- mathMethodActivity -->
+    <string name="chooseMathMethodText">Välj räknesätt</string>
+
+</resources>
